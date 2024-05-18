@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  width: 944px;
+  min-height: 10px;
+  margin: 0 auto;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  box-sizing: border-box;
+  background-color: rgb(15, 188, 15);
+  background: linear-gradient(to top, #577590, #43aa8b);
+  border-bottom: 2px solid #f94144;
+  height: 35px;
+}
