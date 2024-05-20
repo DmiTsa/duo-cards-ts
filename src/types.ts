@@ -1,3 +1,5 @@
+import { pages, imgLibs } from './constants'
+ 
 export type tile = {
     id: number,
     type: number,
@@ -11,12 +13,12 @@ export type level = {
     dif: number,
     sets: number,
     tiles: tile[],
-    imgLib: string,
+    imgLib: imgLibs,
     lives: number,
 }
 
 export type gameState = {
-    activePage: string,
+    activePage: pages,
     gameSet: string,
     levels: level[],
     currentLevel: number,

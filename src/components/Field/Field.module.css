@@ -1,0 +1,9 @@
+.field {
+    margin: 0 auto;
+    max-width: 800px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    border: 2px solid #f3722c;
+    border-radius: 7px;
+}

@@ -1,10 +1,10 @@
 import { useAppDispatch } from "../../hooks";
 import {
   //   setLivesFromState,
-  //   incrementCurrentLevel,
+  incrementCurrentLevel,
   setLevels,
   setGameSet,
-  //   setActivePage,
+  setActivePage,
 } from "../../store/gameSlice";
 // import { setCurrentUser } from "../../redux/userSlice";
 import {
@@ -13,6 +13,7 @@ import {
   HARD_GAMESET,
 } from "../../data/gameSets";
 import allLevelsCreator from "../../utils/allLevelsCreator";
+import { pages } from "../../constants";
 import style from "./Greeting.module.css";
 // import { useState } from "react";
 
@@ -22,6 +23,7 @@ const Greeting: React.FC = () => {
 
   const gameClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
     const id: string = e.currentTarget.id;
+    console.log("clickHandler");
 
     switch (id) {
       case "easy":
@@ -43,13 +45,13 @@ const Greeting: React.FC = () => {
         console.log("Error");
         break;
     }
+
+    //     dispatch(setCurrentUser(userName));
+    dispatch(incrementCurrentLevel());
+    //     dispatch(setLivesFromState());
+    dispatch(setActivePage(pages.currentGame));
   };
 
-  //     dispatch(setCurrentUser(userName));
-  //     dispatch(incrementCurrentLevel());
-  //     dispatch(setLivesFromState());
-  //     dispatch(setActivePage("currentGame"));
-  //   };
   return (
     <>
       <div className={style.greeting}>

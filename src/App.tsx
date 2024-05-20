@@ -1,6 +1,9 @@
 import { useAppSelector } from "./hooks";
 import { selectorActivePage } from "./store/gameSlice";
 import Greeting from "./pages/Greeting/Greeting";
+import SelfLevels from "./pages/SelfLevels/SelfLevels";
+import CurrentGame from "./pages/CurrentGame/CurrentGame";
+import { pages } from "./constants";
 import "./App.css";
 
 function App() {
@@ -9,7 +12,18 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        {activePage === "greeting" ? <Greeting /> : <p> no page</p>}
+        {activePage === pages.greeting ? (
+          <Greeting />
+        ) : activePage === pages.selfLevels ? (
+          <SelfLevels />
+        ) : activePage === pages.currentGame ? (
+          <CurrentGame />
+        ) : activePage === pages.gameOver ? (
+          // <GameOver />
+          <p> gameover </p>
+        ) : (
+          <span> no page</span>
+        )}
       </div>
     </div>
   );
@@ -18,14 +32,6 @@ function App() {
 export default App;
 
 // import CurrentGame from './pages/CurrentGame/CurrentGame';
-// import Levels from './pages/Levels/Levels';
 // import GameOver from './pages/GameOver/GameOver';
 
 // function App() {
-
-//         {activePage === 'greeting' ? <Greeting /> :
-//           activePage === 'levels' ? <Levels /> :
-//             activePage === 'currentGame' ? <CurrentGame /> :
-//               activePage === 'gameOver' ? <GameOver /> :
-//                 < span > no page</span>
-//         }

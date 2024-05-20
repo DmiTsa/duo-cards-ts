@@ -1,0 +1,27 @@
+.leftSide {
+    width: 20%;
+    /* padding: 0 15px; */
+    margin: 10px;
+
+}
+
+.rightSide {
+    width: 80%;
+    /* padding: 0 15px; */
+    margin: 10px;
+}
+
+.gameInfo {
+    /* dev */
+    background-color: rgb(0, 255, 85);
+}
+
+.gameProgress {
+    /* dev */
+    background-color: rgb(108, 15, 86);
+}
+
+.buttons {
+    /* dev */
+    background-color: rgb(29, 191, 212);
+}
