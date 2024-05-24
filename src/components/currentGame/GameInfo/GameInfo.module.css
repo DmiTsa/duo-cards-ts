@@ -1,0 +1,27 @@
+.gameInfo {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    /* flex-wrap: wrap; */
+    border: 2px solid #f3722c;
+    border-radius: 7px;
+}
+
+.user {
+    margin: 5px 10px;
+    font-weight: bold;
+}
+
+.info {
+    margin: 5px 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.divider {
+    width: 20px;
+}

@@ -5,9 +5,8 @@ import { pages } from '../constants'
 
 const initialState: gameState = {
     activePage: pages.greeting,
-    gameSet: '',
     levels: [],
-    currentLevel: -1,
+    currentLevel: 0,
     lives: 5,
 }
 
@@ -19,38 +18,34 @@ reducers: {
             return { ...state, activePage: action.payload }
         },
 
-        setGameSet: (state, action: PayloadAction<string>) => ( { ...state, gameSet: action.payload } ),
+        // setGameSet: (state, action: PayloadAction<string>) => ( { ...state, gameSet: action.payload } ),
 
         setLevels: (state, action: PayloadAction<level[]>) => {
             return { ...state, levels: action.payload }
         },
 
-//         decrementLive: (state) => {
-//             return { ...state, lives: state.lives === 0 ? 0 : state.lives - 1 }
-//         },
+        decrementLive: (state) => {
+            return { ...state, lives: state.lives === 0 ? 0 : state.lives - 1 }
+        },
 
         incrementCurrentLevel: (state) => {
             return { ...state, currentLevel: state.currentLevel + 1 }
         },
 
-//         setLivesFromState: (state) => {
-//             return { ...state, lives: state.lives + state.levels[state.currentLevel].lives }
-//         }
+        setLivesFromState: (state) => {
+            return { ...state, lives: state.lives + state.levels[state.currentLevel].lives }
+        }
 }
 })
-
-export const { setGameSet, setLevels, incrementCurrentLevel, setActivePage
-    // setLivesFromState, decrementLive, 
+//setGameSet,
+export const {  setLevels, incrementCurrentLevel, setActivePage, decrementLive, setLivesFromState
  } = gameSlice.actions
 
-export const selectorActivePage = (state: RootState) => { return state.game.activePage }
-export const selectNumberCurrentLevel = (state: RootState) => { return state.game.currentLevel }
+export const selectorActivePage = (state: RootState) => ( state.game.activePage )
+export const selectNumberCurrentLevel = (state: RootState) => ( state.game.currentLevel )
+export const selectLives = (state: RootState) => ( state.game.lives )
+export const selectCurrentLevel = (state: RootState) => ( state.game.levels[state.game.currentLevel] )
+export const selectLevels = (state: RootState) => ( state.game.levels )
 
 export default gameSlice.reducer
 
-
-// export const { incrementCurrentLevel, setLivesFromState, decrementLive, setGameSet, setActivePage, setLevels } = gameSlice.actions
-
-// export const selectLives = (state) => { return state.game.lives }
-// export const selectLevels = (state) => { return state.game.levels }
-// export const selectCurrentLevel = (state) => { return state.game.levels[state.game.currentLevel] }

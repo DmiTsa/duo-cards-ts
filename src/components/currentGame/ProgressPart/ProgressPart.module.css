@@ -1,0 +1,51 @@
+.progressPart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 5px;
+    width: 150px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 3px;
+    user-select: none
+}
+
+.delimeter {
+    width: 3px;
+}
+
+.easy {
+    background-color: #90be6d;
+    background: linear-gradient(to left bottom, #90be6d, white);
+    border: 1px solid #285704;
+    color: #285704;
+}
+
+.normal {
+    background-color: #577590;
+    background: linear-gradient(to left bottom, #577590, white);
+    border: 1px solid #072845;
+    color: #072845;
+}
+
+.hard {
+    background-color: #f94144;
+    background: linear-gradient(to left bottom, #f94144, white);
+    border: 1px solid #5f0e10;
+    color: #5f0e10;
+}
+
+.active {
+    border-width: 3px;
+    border-radius: 12px;
+}
+
+.ended {
+    /* border-width: 3px;
+    border-radius: 12px; */
+    background-color: lightslategrey;
+    background: linear-gradient(to left bottom, lightslategrey, white);
+    border: 1px solid #285704;
+    color: lightslategrey;
+}

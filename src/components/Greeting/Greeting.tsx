@@ -1,12 +1,5 @@
 import { useAppDispatch } from "../../hooks";
-import {
-  //   setLivesFromState,
-  incrementCurrentLevel,
-  setLevels,
-  setGameSet,
-  setActivePage,
-} from "../../store/gameSlice";
-// import { setCurrentUser } from "../../redux/userSlice";
+import { setLevels, setActivePage } from "../../store/gameSlice";
 import {
   EASY_GAMESET,
   NORMAL_GAMESET,
@@ -15,40 +8,32 @@ import {
 import allLevelsCreator from "../../utils/allLevelsCreator";
 import { pages } from "../../constants";
 import style from "./Greeting.module.css";
-// import { useState } from "react";
+import { gameType } from "../../constants";
 
 const Greeting: React.FC = () => {
-  //   const [userName, setUserName] = useState("user");
   const dispatch = useAppDispatch();
 
   const gameClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
     const id: string = e.currentTarget.id;
-    console.log("clickHandler");
 
     switch (id) {
-      case "easy":
-        dispatch(setGameSet("easy"));
+      case gameType.easy:
         dispatch(setLevels(allLevelsCreator(EASY_GAMESET)));
         break;
-      case "normal":
-        dispatch(setGameSet("normal"));
+
+      case gameType.normal:
         dispatch(setLevels(allLevelsCreator(NORMAL_GAMESET)));
         break;
-      case "hard":
-        dispatch(setGameSet("hard"));
+
+      case gameType.hard:
         dispatch(setLevels(allLevelsCreator(HARD_GAMESET)));
         break;
-      // case 'custom':
-      //   dispatch(setGameSet('custom'))
-      //   break;
-      default:
-        console.log("Error");
+
+      case gameType.custom:
+        dispatch(setActivePage(pages.selfLevels));
         break;
     }
 
-    //     dispatch(setCurrentUser(userName));
-    dispatch(incrementCurrentLevel());
-    //     dispatch(setLivesFromState());
     dispatch(setActivePage(pages.currentGame));
   };
 
@@ -90,14 +75,14 @@ const Greeting: React.FC = () => {
             value={"Сложная игра"}
             onClick={(e) => gameClickHandler(e)}
           />
-          {/* <input
-              disabled
-              id="custom"
-              className={style.button + " " + style.custom}
-              type="button"
-              value={"Создать игру"}
-              onClick={(e) => gameClickHandler(e.currentTarget)}
-            /> */}
+          <input
+            disabled
+            id="custom"
+            className={style.button + " " + style.custom}
+            type="button"
+            value={"Создать игру"}
+            onClick={(e) => gameClickHandler(e)}
+          />
         </div>
       </div>
     </>

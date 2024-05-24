@@ -1,7 +1,7 @@
-import type { tile } from "../../types";
-import { imgLibs } from "../../constants";
-import imgClosed from "../../lib/svg/n.svg";
-import imgLibController from "../../lib/tileImages";
+import type { tile } from "../../../types";
+import { imgLibs } from "../../../constants";
+import imgClosed from "../../../lib/svg/n.svg";
+import imgLibController from "../../../lib/tileImages";
 import style from "./Tile.module.css";
 
 interface I_tile {
@@ -32,7 +32,7 @@ const Tile = ({ tile, imgLib, click }: I_tile) => {
   } else {
     return (
       <div className={style.card + " " + style.disabled}>
-        <img src={imgLib[type]} className={style.img} alt="heart" />
+        <img src={imgSet[type]} className={style.img} alt="heart" />
       </div>
     );
   }

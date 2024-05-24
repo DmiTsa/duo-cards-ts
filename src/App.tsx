@@ -1,8 +1,8 @@
 import { useAppSelector } from "./hooks";
 import { selectorActivePage } from "./store/gameSlice";
-import Greeting from "./pages/Greeting/Greeting";
-import SelfLevels from "./pages/SelfLevels/SelfLevels";
-import CurrentGame from "./pages/CurrentGame/CurrentGame";
+import Greeting from "./components/Greeting/Greeting";
+import SelfLevels from "./components/SelfLevels/SelfLevels";
+import CurrentGame from "./components/currentGame/CurrentGame/CurrentGame";
 import { pages } from "./constants";
 import "./App.css";
 
