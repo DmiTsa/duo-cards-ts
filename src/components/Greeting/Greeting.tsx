@@ -1,5 +1,11 @@
-import { useAppDispatch } from "../../hooks";
-import { setLevels, setActivePage } from "../../store/gameSlice";
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import {
+  setLevels,
+  setActivePage,
+  selectUser,
+  setUser,
+} from "../../store/gameSlice";
 import {
   EASY_GAMESET,
   NORMAL_GAMESET,
@@ -11,7 +17,21 @@ import style from "./Greeting.module.css";
 import { gameType } from "../../constants";
 
 const Greeting: React.FC = () => {
+  const user = useAppSelector(selectUser);
+  const [currentUserName, setCurrentUserName] = useState(user.name);
   const dispatch = useAppDispatch();
+
+  const NAME_LENGTH = 15;
+
+  const userHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const userName = e.currentTarget.value;
+
+    if (userName.length < NAME_LENGTH) {
+      setCurrentUserName(userName);
+    } else {
+      setCurrentUserName(userName.slice(0, NAME_LENGTH));
+    }
+  };
 
   const gameClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
     const id: string = e.currentTarget.id;
@@ -19,20 +39,48 @@ const Greeting: React.FC = () => {
     switch (id) {
       case gameType.easy:
         dispatch(setLevels(allLevelsCreator(EASY_GAMESET)));
+        dispatch(
+          setUser({
+            id: "ew",
+            name: currentUserName !== "" ? currentUserName : user.name,
+            maxPoints: 0,
+          })
+        );
         dispatch(setActivePage(pages.currentGame));
         break;
 
       case gameType.normal:
         dispatch(setLevels(allLevelsCreator(NORMAL_GAMESET)));
+        dispatch(
+          setUser({
+            id: "ew",
+            name: currentUserName !== "" ? currentUserName : user.name,
+            maxPoints: 0,
+          })
+        );
         dispatch(setActivePage(pages.currentGame));
         break;
 
       case gameType.hard:
         dispatch(setLevels(allLevelsCreator(HARD_GAMESET)));
+        dispatch(
+          setUser({
+            id: "ew",
+            name: currentUserName !== "" ? currentUserName : user.name,
+            maxPoints: 0,
+          })
+        );
         dispatch(setActivePage(pages.currentGame));
         break;
 
       case gameType.custom:
+        dispatch(
+          setUser({
+            id: "ew",
+            name: currentUserName !== "" ? currentUserName : user.name,
+            maxPoints: 0,
+          })
+        );
         dispatch(setActivePage(pages.selfLevels));
         break;
     }
@@ -46,8 +94,8 @@ const Greeting: React.FC = () => {
           <input
             className={style.userInput}
             type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            value={currentUserName}
+            onChange={(e) => userHandler(e)}
           ></input>
         </div>
         <span className={style.bigText + " " + style.firstLetter}>D</span>

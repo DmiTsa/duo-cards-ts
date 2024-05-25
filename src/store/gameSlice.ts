@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from './store'
-import type { level, gameState } from '../types'
+import type { level, gameState, user } from '../types'
 import { pages } from '../constants'
 
 const initialState: gameState = {
     activePage: pages.greeting,
     levels: [],
     currentLevel: 0,
+    user: { id: 'usr', name: 'user', maxPoints: 0},
     lives: 5,
     points: 0
 }
@@ -33,6 +34,10 @@ reducers: {
             return { ...state, lives: state.lives + state.levels[state.currentLevel].lives }
         },
 
+        setUser: (state, action: PayloadAction<user>) => {
+            return {...state, user: action.payload}
+        },
+
         decrementLive: (state) => {
             return { ...state, lives: state.lives === 0 ? 0 : state.lives - 1 }
         },
@@ -43,13 +48,21 @@ reducers: {
     }
 })
 //setGameSet,
-export const {  setLevels, incrementCurrentLevel, setActivePage, decrementLive, setLivesFromState, addPoints
+export const {
+    setLevels,
+    incrementCurrentLevel,
+    setActivePage,
+    decrementLive,
+    setLivesFromState,
+    addPoints,
+    setUser
  } = gameSlice.actions
 
 export const selectorActivePage = (state: RootState) => ( state.game.activePage )
 export const selectNumberCurrentLevel = (state: RootState) => ( state.game.currentLevel )
 export const selectCurrentLevel = (state: RootState) => ( state.game.levels[state.game.currentLevel] )
 export const selectLevels = (state: RootState) => ( state.game.levels )
+export const selectUser = (state: RootState) => ( state.game.user )
 export const selectLives = (state: RootState) => ( state.game.lives )
 export const selectPoints = (state: RootState) => ( state.game.points )
 
