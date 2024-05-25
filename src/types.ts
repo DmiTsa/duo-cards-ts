@@ -19,10 +19,10 @@ export type level = {
 
 export type gameState = {
     activePage: pages,
-    // gameSet: string,
     levels: level[],
     currentLevel: number,
     lives: number,
+    points: number
 }
 
 export type gameSet = {
@@ -32,4 +32,10 @@ export type gameSet = {
     sets: number, //maximum sets = 10
     imgLib: imgLibs,
     lives: number
+}
+
+export type user = {
+    id: string,
+    name: string,
+    maxPoints: number
 }

@@ -1,0 +1,50 @@
+.levelCard {
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 5px;
+    width: 205px;
+    height: 120px;
+    border-radius: 15px 15px 15px 15px;
+    cursor: pointer;
+}
+
+.levelCard:active {
+    border-color: #f94144;
+}
+
+.easy {
+    background-color: #90be6d;
+    background: linear-gradient(to left bottom, #90be6d, white);
+    border: 2px solid #285704;
+    color: #285704;
+}
+
+.normal {
+    background-color: #577590;
+    background: linear-gradient(to left bottom, #577590, white);
+    border: 2px solid #072845;
+    color: #072845;
+}
+
+.hard {
+    background-color: #f94144;
+    background: linear-gradient(to left bottom, #f94144, white);
+    border: 2px solid #5f0e10;
+    color: #5f0e10;
+}
+
+.levelCard:hover {
+    border-radius: 15px 40px 15px 15px;
+}
+
+.name {
+    margin-bottom: 10px;
+    font-size: large;
+    font-weight: bold;
+    /* color: rgb(2, 96, 2); */
+}
+
+.p {
+    /* font-size: large; */
+    color: #f3722c;
+}

@@ -1,0 +1,17 @@
+.gameOver {
+    margin: 0 auto;
+
+}
+
+.h1 {
+    /* margin: 0 auto; */
+    font-weight: bold;
+    font-size: 120px;
+    color: #f3722c;
+}
+
+.text {
+    color: #f3722c;
+    font-size: large;
+    font-weight: bold;
+}

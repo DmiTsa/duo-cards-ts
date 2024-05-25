@@ -1,5 +1,6 @@
 // import GameProgress from "../../components/GameProgress/GameProgress";
-// import LevelCardInfo from "../../components/LevelCardInfo/LevelCardInfo";
+import LevelCardInfo from "../LevelCardInfo/LevelCardInfo";
+import { imgLibs } from "../../../constants";
 import style from "./SelfLevels.module.css";
 
 const SelfLevels: React.FC = () => {
@@ -9,13 +10,48 @@ const SelfLevels: React.FC = () => {
         {/* <GameProgress levels={levels} numberCurrentLevel={numberCurrentLevel}/> */}
       </div>
       <div className={style.levelsSet}>
-        {/* <LevelCardInfo name={"Default"} dif={2} sets={4} imgLib={"Hearts"} />
-        <LevelCardInfo name={"Default"} dif={3} sets={4} imgLib={"Hearts"} />
-        <LevelCardInfo name={"Default"} dif={2} sets={4} imgLib={"Hearts"} />
-        <LevelCardInfo name={"Default"} dif={5} sets={4} imgLib={"Hearts"} />
-        <LevelCardInfo name={"Default"} dif={2} sets={4} imgLib={"Hearts"} />
-        <LevelCardInfo name={"Default"} dif={3} sets={4} imgLib={"Hearts"} />
-        <LevelCardInfo name={"Default"} dif={5} sets={4} imgLib={"Hearts"} /> */}
+        <LevelCardInfo
+          name={"Default"}
+          dif={2}
+          sets={4}
+          imgLib={imgLibs.hearts}
+        />
+        <LevelCardInfo
+          name={"Default"}
+          dif={3}
+          sets={4}
+          imgLib={imgLibs.hearts}
+        />
+        <LevelCardInfo
+          name={"Default"}
+          dif={2}
+          sets={4}
+          imgLib={imgLibs.hearts}
+        />
+        <LevelCardInfo
+          name={"Default"}
+          dif={5}
+          sets={4}
+          imgLib={imgLibs.hearts}
+        />
+        <LevelCardInfo
+          name={"Default"}
+          dif={2}
+          sets={4}
+          imgLib={imgLibs.hearts}
+        />
+        <LevelCardInfo
+          name={"Default"}
+          dif={3}
+          sets={4}
+          imgLib={imgLibs.hearts}
+        />
+        <LevelCardInfo
+          name={"Default"}
+          dif={5}
+          sets={4}
+          imgLib={imgLibs.hearts}
+        />
       </div>
     </div>
   );

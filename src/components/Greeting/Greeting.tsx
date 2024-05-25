@@ -19,22 +19,23 @@ const Greeting: React.FC = () => {
     switch (id) {
       case gameType.easy:
         dispatch(setLevels(allLevelsCreator(EASY_GAMESET)));
+        dispatch(setActivePage(pages.currentGame));
         break;
 
       case gameType.normal:
         dispatch(setLevels(allLevelsCreator(NORMAL_GAMESET)));
+        dispatch(setActivePage(pages.currentGame));
         break;
 
       case gameType.hard:
         dispatch(setLevels(allLevelsCreator(HARD_GAMESET)));
+        dispatch(setActivePage(pages.currentGame));
         break;
 
       case gameType.custom:
         dispatch(setActivePage(pages.selfLevels));
         break;
     }
-
-    dispatch(setActivePage(pages.currentGame));
   };
 
   return (
@@ -42,12 +43,12 @@ const Greeting: React.FC = () => {
       <div className={style.greeting}>
         <div className={style.user}>
           <span>Добро пожаловать,</span>
-          {/* <input
-              className={style.userInput}
-              type="text"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-            ></input> */}
+          <input
+            className={style.userInput}
+            type="text"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          ></input>
         </div>
         <span className={style.bigText + " " + style.firstLetter}>D</span>
         <span className={style.bigText}>uo</span>
@@ -76,7 +77,6 @@ const Greeting: React.FC = () => {
             onClick={(e) => gameClickHandler(e)}
           />
           <input
-            disabled
             id="custom"
             className={style.button + " " + style.custom}
             type="button"

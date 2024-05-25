@@ -1,8 +1,9 @@
 import { useAppSelector } from "./hooks";
 import { selectorActivePage } from "./store/gameSlice";
 import Greeting from "./components/Greeting/Greeting";
-import SelfLevels from "./components/SelfLevels/SelfLevels";
+import SelfLevels from "./components/selfLevels/SelfLevels/SelfLevels";
 import CurrentGame from "./components/currentGame/CurrentGame/CurrentGame";
+import GameOver from "./components/GameOver/GameOver";
 import { pages } from "./constants";
 import "./App.css";
 
@@ -19,10 +20,9 @@ function App() {
         ) : activePage === pages.currentGame ? (
           <CurrentGame />
         ) : activePage === pages.gameOver ? (
-          // <GameOver />
-          <p> gameover </p>
+          <GameOver />
         ) : (
-          <span> no page</span>
+          <span>Error! no page</span>
         )}
       </div>
     </div>
@@ -30,8 +30,3 @@ function App() {
 }
 
 export default App;
-
-// import CurrentGame from './pages/CurrentGame/CurrentGame';
-// import GameOver from './pages/GameOver/GameOver';
-
-// function App() {

@@ -8,6 +8,7 @@ const initialState: gameState = {
     levels: [],
     currentLevel: 0,
     lives: 5,
+    points: 0
 }
 
 export const gameSlice = createSlice({
@@ -24,28 +25,33 @@ reducers: {
             return { ...state, levels: action.payload }
         },
 
+        incrementCurrentLevel: (state) => {
+            return { ...state, currentLevel: state.currentLevel + 1 }
+        },
+        
+        setLivesFromState: (state) => {
+            return { ...state, lives: state.lives + state.levels[state.currentLevel].lives }
+        },
+
         decrementLive: (state) => {
             return { ...state, lives: state.lives === 0 ? 0 : state.lives - 1 }
         },
 
-        incrementCurrentLevel: (state) => {
-            return { ...state, currentLevel: state.currentLevel + 1 }
-        },
-
-        setLivesFromState: (state) => {
-            return { ...state, lives: state.lives + state.levels[state.currentLevel].lives }
+        addPoints: (state) => {
+            return {...state, points: state.points + state.levels[state.currentLevel].dif * state.levels[state.currentLevel].dif}
         }
-}
+    }
 })
 //setGameSet,
-export const {  setLevels, incrementCurrentLevel, setActivePage, decrementLive, setLivesFromState
+export const {  setLevels, incrementCurrentLevel, setActivePage, decrementLive, setLivesFromState, addPoints
  } = gameSlice.actions
 
 export const selectorActivePage = (state: RootState) => ( state.game.activePage )
 export const selectNumberCurrentLevel = (state: RootState) => ( state.game.currentLevel )
-export const selectLives = (state: RootState) => ( state.game.lives )
 export const selectCurrentLevel = (state: RootState) => ( state.game.levels[state.game.currentLevel] )
 export const selectLevels = (state: RootState) => ( state.game.levels )
+export const selectLives = (state: RootState) => ( state.game.lives )
+export const selectPoints = (state: RootState) => ( state.game.points )
 
 export default gameSlice.reducer
 

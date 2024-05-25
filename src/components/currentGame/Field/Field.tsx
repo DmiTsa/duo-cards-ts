@@ -17,6 +17,7 @@ import {
   selectNumberCurrentLevel,
   selectCurrentLevel,
   selectLives,
+  addPoints,
 } from "../../../store/gameSlice";
 import Tile from "../Tile/Tile";
 import { imgLibs, pages } from "../../../constants";
@@ -56,9 +57,12 @@ const Field: React.FC = () => {
         .every((el) => el === matchedTiles[0].type);
 
       setTimeout(() => {
-        isAllTypeMached
-          ? dispatch(setIsEnabledFalse(currentTileId))
-          : dispatch(setIsOpenedFalse(currentTileId));
+        if (isAllTypeMached) {
+          dispatch(setIsEnabledFalse(currentTileId));
+          dispatch(addPoints());
+        } else {
+          dispatch(setIsOpenedFalse(currentTileId));
+        }
       }, DELAY_MS);
 
       setCurrentClick(0);
