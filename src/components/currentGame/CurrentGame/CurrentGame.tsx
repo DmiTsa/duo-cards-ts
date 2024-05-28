@@ -3,7 +3,7 @@ import {
   selectLevels,
   selectNumberCurrentLevel,
 } from "../../../store/gameSlice";
-import GameProgress from "../GameProgress/GameProgress";
+import GameProgress from "../../parts/GameProgress/GameProgress";
 import Field from "../Field/Field";
 import GameInfo from "../GameInfo/GameInfo";
 import style from "./CurrentGame.module.css";

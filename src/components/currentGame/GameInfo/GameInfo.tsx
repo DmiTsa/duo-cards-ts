@@ -17,12 +17,16 @@ const GameInfo: React.FC = () => {
     <div className={style.gameInfo}>
       <div className={style.user}>{userName.name}</div>
       <div className={style.info}>
-        <div>
-          <BsChatSquareHeart /> {gameLives}
+        <div className={style.info}>
+          <BsChatSquareHeart />
+          <div className={style.divider}></div>
+          {gameLives}
         </div>
         <div className={style.divider}></div>
-        <div>
-          <SiSecurityscorecard /> {gamePoint}
+        <div className={style.info}>
+          <SiSecurityscorecard />
+          <div className={style.divider}></div>
+          {gamePoint}
         </div>
       </div>
     </div>

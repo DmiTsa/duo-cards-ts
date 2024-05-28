@@ -3,12 +3,14 @@ import { RootState } from './store'
 import type { level, gameState, user } from '../types'
 import { pages } from '../constants'
 
+const MAX_LEVELS = 10
+
 const initialState: gameState = {
     activePage: pages.greeting,
     levels: [],
     currentLevel: 0,
     user: { id: 'usr', name: 'user', maxPoints: 0},
-    lives: 5,
+    lives: 20,
     points: 0
 }
 
@@ -44,7 +46,19 @@ reducers: {
 
         addPoints: (state) => {
             return {...state, points: state.points + state.levels[state.currentLevel].dif * state.levels[state.currentLevel].dif}
+        },
+
+        addSelfLevel: (state, action: PayloadAction<level>) => {
+            return {...state,
+                levels: state.currentLevel < MAX_LEVELS ? [...state.levels, action.payload] : state.levels,
+                currentLevel: state.currentLevel < MAX_LEVELS ? state.currentLevel + 1 : state.currentLevel
+            }
+        },
+
+        setNumberCurrentLevelByZero: (state) => {
+            return {...state, currentLevel: 0}
         }
+
     }
 })
 //setGameSet,
@@ -55,7 +69,9 @@ export const {
     decrementLive,
     setLivesFromState,
     addPoints,
-    setUser
+    setUser,
+    addSelfLevel,
+    setNumberCurrentLevelByZero
  } = gameSlice.actions
 
 export const selectorActivePage = (state: RootState) => ( state.game.activePage )

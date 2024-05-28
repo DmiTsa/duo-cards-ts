@@ -1,57 +1,61 @@
-// import GameProgress from "../../components/GameProgress/GameProgress";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import GameProgress from "../../parts/GameProgress/GameProgress";
+import {
+  addSelfLevel,
+  setActivePage,
+  selectLevels,
+  selectNumberCurrentLevel,
+  setNumberCurrentLevelByZero,
+} from "../../../store/gameSlice";
+import { delGameSet, selectFullGameSet } from "../../../store/selfGameSlice";
 import LevelCardInfo from "../LevelCardInfo/LevelCardInfo";
-import { imgLibs } from "../../../constants";
+import fullLevelCreator from "../../../utils/fullLevelCreator";
+import { gameSet } from "../../../types";
+import { pages } from "../../../constants";
 import style from "./SelfLevels.module.css";
 
 const SelfLevels: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const allGameSets = useAppSelector(selectFullGameSet);
+  const levels = useAppSelector(selectLevels);
+  const numberCurrentLevel = useAppSelector(selectNumberCurrentLevel);
+
+  const addButtonHandler = (gameSet: gameSet) => {
+    dispatch(addSelfLevel(fullLevelCreator(gameSet)));
+  };
+
+  const delButtonHandler = (id: string) => {
+    dispatch(delGameSet(id));
+  };
+
+  useEffect(() => {
+    if (levels.length === 10) {
+      dispatch(setNumberCurrentLevelByZero());
+      dispatch(setActivePage(pages.currentGame));
+    }
+  }, [levels]);
+
   return (
     <div className={style.levels}>
       <div className={style.createGame}>
-        {/* <GameProgress levels={levels} numberCurrentLevel={numberCurrentLevel}/> */}
+        <GameProgress levels={levels} numberCurrentLevel={numberCurrentLevel} />
       </div>
       <div className={style.levelsSet}>
-        <LevelCardInfo
-          name={"Default"}
-          dif={2}
-          sets={4}
-          imgLib={imgLibs.hearts}
-        />
-        <LevelCardInfo
-          name={"Default"}
-          dif={3}
-          sets={4}
-          imgLib={imgLibs.hearts}
-        />
-        <LevelCardInfo
-          name={"Default"}
-          dif={2}
-          sets={4}
-          imgLib={imgLibs.hearts}
-        />
-        <LevelCardInfo
-          name={"Default"}
-          dif={5}
-          sets={4}
-          imgLib={imgLibs.hearts}
-        />
-        <LevelCardInfo
-          name={"Default"}
-          dif={2}
-          sets={4}
-          imgLib={imgLibs.hearts}
-        />
-        <LevelCardInfo
-          name={"Default"}
-          dif={3}
-          sets={4}
-          imgLib={imgLibs.hearts}
-        />
-        <LevelCardInfo
-          name={"Default"}
-          dif={5}
-          sets={4}
-          imgLib={imgLibs.hearts}
-        />
+        {allGameSets.length !== 0 ? (
+          allGameSets.map((gameSet) => {
+            return (
+              <LevelCardInfo
+                key={gameSet.id}
+                gameSet={gameSet}
+                addClick={addButtonHandler}
+                delClick={delButtonHandler}
+              />
+            );
+          })
+        ) : (
+          <p>no level</p>
+        )}
       </div>
     </div>
   );

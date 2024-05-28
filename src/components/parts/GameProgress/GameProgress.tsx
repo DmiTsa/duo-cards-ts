@@ -1,4 +1,4 @@
-import ProgressPart from "../ProgressPart/ProgressPart";
+import ProgressPart from "../../currentGame/ProgressPart/ProgressPart";
 import { level } from "../../../types";
 import style from "./GameProgress.module.css";
 

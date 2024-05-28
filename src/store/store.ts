@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import gameSlice from './gameSlice'
 import levelSlice from './levelSlice'
+import selfGameSlice from './selfGameSlice'
 
 const store = configureStore({
     reducer: {
         game: gameSlice,
         level: levelSlice,
+        selfGame: selfGameSlice
     }
 })
 

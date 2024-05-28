@@ -32,6 +32,11 @@ export type gameState = {
     points: number
 }
 
+export type selfGameState = {
+    fullGameSet: gameSet[],
+    gameSet: gameSet[],
+}
+
 export type gameSet = {
     id: string,
     name: string,
