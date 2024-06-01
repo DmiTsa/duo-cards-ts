@@ -34,7 +34,7 @@ export type gameState = {
 
 export type selfGameState = {
     fullGameSet: gameSet[],
-    gameSet: gameSet[],
+    // gameSet: gameSet[],
 }
 
 export type gameSet = {

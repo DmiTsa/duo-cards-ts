@@ -5,7 +5,7 @@ import { selfGameset } from "../data/selfGameSets";
 
 const initialState: selfGameState = {
     fullGameSet: selfGameset,
-    gameSet: [],
+    // gameSet: [],
     //levels
     //currentLevel
 }

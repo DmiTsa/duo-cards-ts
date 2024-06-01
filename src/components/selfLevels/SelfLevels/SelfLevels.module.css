@@ -1,15 +1,9 @@
 .levels {
-    /* dev  */
-    /* background-color: aqua; */
-
     display: inline-flex;
     width: 100%;
 }
 
 .levelsSet {
-    /* dev  */
-    /* background-color: rgb(0, 255, 51); */
-
     border: 2px solid #f8961e;
     border-radius: 7px;
     display: inline-flex;
@@ -20,10 +14,6 @@
 }
 
 .createGame {
-    /* dev  */
-    background-color: blue;
-
     width: 25%;
     margin: 10px;
-
 }
